@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <title>Cliente agencias</title>
+</head>
+<body>
+    <h1 class="text-center"> Agencia </h1>
+    <div class="container-fluid">
+        <table class="table text-center " id="tableAutos">
+            <thead>
+                <h1>Autos <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerCar"><i class="fas fa-car"></i> <i class="fas fa-plus-square"></i></button></h1>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Matricula</th>
+                    <th class="text-center">Año de Verificación</th>
+                    <th class="text-center">Fecha de Registro</th>
+                    <th class="text-center">Fecha de Actualización</th>
+                    <th class="text-center">Estado</th>
+                    <th class="text-center">Marca</th>
+                    <th class="text-center">Detalles</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <table class="table text-center " id="tableMarcas">
+            <thead>
+                <h1>Marcas <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerMark"><i class="fas fa-plus-square"></i></button></h1>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Detalles</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CREATE MODALS -->
+    <div class="modal fade" id="registerCar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registrar Auto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" onsubmit="registerCar();">
+                    <div class="modal-body">
+    
+                        <label>Nombreo</label>
+                        <input type="text" class="form-control" id="nameCarCreate" name="nameCarCreate" placeholder="Nombre" required>
+                        <label>Matricula</label>
+                        <input type="text" class="form-control" id="matriculaCreate" name="matriculaCreate" placeholder="AB12" required>
+                        <label>Añó de Verificación</label>
+                        <input type="text" class="form-control" id="yearVerificationCreate" name="yearVerificationCreate" placeholder="2000" required>
+                        <label>Fecha de Registro</label>
+                        <input type="date" class="form-control" id="yearRegisterCreate" name="yearRegisterCreate" placeholder="" required >
+                        <label>Marca</label>
+                        <input type="number" class="form-control" id="marcaCreate" name="marcaCreate" placeholder="" required min="0">
+    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerMark" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registrar Marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" onsubmit="registerMark();">
+                    <div class="modal-body">
+    
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" id="nombreMarcaCreate" name="nombreMarcaCreate" placeholder="Nombre" required>
+                
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+
+     <!-- DETAILS MODAL -->
+
+     <div class="modal fade" id="detailsAutos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles Auto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  
+                    <label>Nombreo</label>
+                    <input type="text" class="form-control" id="nombreDetails" name="nombreDetails" disabled>
+                    <label>Matricula</label>
+                    <input type="text" class="form-control" id="matriculaDetails" name="matriculaDetails"  disabled>
+                    <label>Añó de Verificación</label>
+                    <input type="text" class="form-control" id="yearVerificationDetails" name="yearVerificationDetails" disabled>
+                    <label>Fecha de Registro</label>
+                    <input type="text" class="form-control" id="yearRegisterDetails" name="yearRegisterDetails"  disabled>
+                    <label>Fecha de Actualización</label>
+                    <input type="text" class="form-control" id="yearUpdateDetails" name="yearUpdateDetails"  disabled>
+                    <label>Estado</label>
+                    <input type="text" class="form-control" id="status" name="status"  disabled>
+                    <label>Marca</label>
+                    <input type="number" class="form-control" id="marcaDetails" name="marcaDetails" disabled>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="detailsMarcas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles Marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" id="nameMarcasDetails" name="nameMarcasDetails" disabled>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- UPDATE MODAL -->
+
+     <div class="modal fade" id="updateAutos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Auto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="javascript:void(0);" onsubmit="updateAutos();">
+                    <div class="modal-body">
+                        <input type="hidden" id="idAutoUpdate"> 
+                        <label>Nombreo</label>
+                        <input type="text" class="form-control" id="nameCarUpdate" name="nameCarUpdate" required>
+                        <label>Matricula</label>
+                        <input type="text" class="form-control" id="matriculaUpdate" name="matriculaUpdate" required>
+                        <label>Añó de Verificación</label>
+                        <input type="text" class="form-control" id="yearVerificationUpdate" name="yearVerificationUpdate"  required>
+                        <label>Fecha de Registro</label>
+                        <input type="text" class="form-control" id="yearRegisterUpdate" name="yearRegisterUpdate"  required>
+                        <label>Marca</label>
+                        <input type="number" class="form-control" id="marcaUpdate" name="marcaUpdate" required min="0">
+    
+    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="updateMarcas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="javascript:void(0);" onsubmit="updateMarcas();">
+                    <div class="modal-body">
+                        <input type="hidden" id="idMarcaUpdate"> 
+                        
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" id="nombreMarcaUpdate" name="nombreMarcaUpdate" required>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+     <!-- DELETE MODAL -->
+
+     <div class="modal fade" id="deleteAutos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Auto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" onsubmit="deleteAuto();">
+                    <div class="modal-body">
+    
+                        <input type="hidden" id="idAutoDelete">
+                        <label>Se eliminará el Auto Seleccionado</label>
+                        <br>
+                        <label>¿Esta Seguro de Realiar Los Cambios?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteMarcas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar Marca</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" onsubmit="deleteMarca();">
+                    <div class="modal-body">
+    
+                        <input type="hidden" id="idMarcaDelete">
+                        <label>¿Quiere Eliminar esta Marca?</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script src="./main.js"></script> 
+</body>
+</html>
