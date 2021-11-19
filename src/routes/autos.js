@@ -26,9 +26,10 @@ router.get('/:id', async (req,res)=>{
 });
 
 router.post('/create', async (req,res) => {
-    const {nombre,matricula,añoVerificacion,fechaRegistro,estado,marca} = req.body;
-    const auto = {nombre,matricula,añoVerificacion,fechaRegistro,estado,marca};
+    const {nombre,matricula,añoVerificacion,fechaRegistro,marca} = req.body;
+    const auto = {nombre,matricula,añoVerificacion,fechaRegistro,marca};
     const date = req.body;
+    const status = req.body;
     
     var fecha = new Date();
     var month = fecha.getUTCMonth();
@@ -38,10 +39,14 @@ router.post('/create', async (req,res) => {
     actualización = year+"-"+month+"-"+day
     date.fechaActualizacion = actualización;
     fechaActualizacion =  date.fechaActualizacion;
+
+    status.estado = "1";
+    estado = status.estado;
+
     
     
 
-    await pool.query('INSERT INTO autos set ?, `fechaActualizacion` = ?', [auto,fechaActualizacion]);
+    await pool.query('INSERT INTO autos set ?, `fechaActualizacion` = ?, `estado` = ?', [auto,fechaActualizacion,estado]);
     res.json({
         status: 200,
         message: "se ha registrado correctamente",
